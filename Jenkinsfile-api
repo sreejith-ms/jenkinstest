@@ -1,20 +1,22 @@
 pipeline {
     agent any
-
+    parameters { 
+        string(name: 'DEPLOY_ENV', defaultValue: 'staging', description: '') 
+    }
     stages {
         stage('Build') {
             steps {
-                echo 'Building.. API'
+                echo 'Building.. ${params.DEPLOY_ENV}'
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing.. API'
+                echo 'Testing.. ${params.DEPLOY_ENV}'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying.... API'
+                echo 'Deploying.... ${params.DEPLOY_ENV}'
             }
         }
     }
