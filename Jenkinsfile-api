@@ -6,17 +6,17 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building.. ${params.DEPLOY_ENV}'
+                echo "Building.. ${params.DEPLOY_ENV}"
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing.. ${params.DEPLOY_ENV}'
+                echo "Testing.. ${params.DEPLOY_ENV}"
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying.... ${params.DEPLOY_ENV}'
+                echo "Deploying.... ${params.DEPLOY_ENV}"
             }
         }
     }
