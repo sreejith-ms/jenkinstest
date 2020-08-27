@@ -3,7 +3,7 @@ pipeline {
     parameters { 
         string(name: 'DEPLOY_ENV', defaultValue: 'staging', description: '') 
 	string(name: 'SECRET_ID', defaultValue: 'secret_file_dev', description: '')
-	string(name: 'PARAM1', defaultValue: params.PARAM1 ?: 'PARAM1 - default value' description: 'Test param')
+	string(name: 'PARAM1', defaultValue: params.PARAM1 ?: 'PARAM1 - default value', description: 'Test param')
     }
     stages {
         stage('Build') {
@@ -11,7 +11,7 @@ pipeline {
                 withCredentials([file(credentialsId: params.SECRET_ID, variable: 'secret_file')]) {
 			writeFile file: 'key/secret_file_dev.txt', text: readFile(secret_file)
 		}
-                echo "Building.. ${params.DEPLOY_ENV} ${params.BRANCH}"
+                echo "Building.. ${params.DEPLOY_ENV} ${params.PARAM1}"
             }
         }
         stage('Test') {
