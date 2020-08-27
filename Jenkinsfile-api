@@ -6,11 +6,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                steps {
-			withCredentials([file(credentialsId: 'secret_file_dev', variable: 'secret_file')]) {
-                    		writeFile file: 'key/secret_file_dev.txt', text: readFile(secret_file)
-			}
-                }
+                withCredentials([file(credentialsId: 'secret_file_dev', variable: 'secret_file')]) {
+			writeFile file: 'key/secret_file_dev.txt', text: readFile(secret_file)
+		}
                 echo "Building.. ${params.DEPLOY_ENV}"
             }
         }
